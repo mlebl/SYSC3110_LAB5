@@ -1,25 +1,30 @@
 
 import java.util.*;
-public class AddressBook {
-	private ArrayList buddylist = new ArrayList();
+
+import javax.swing.DefaultListModel;
+
+public class AddressBook extends DefaultListModel {
+	
+	public AddressBook(){
+		super();
+	}
 	
 	public void addBuddy(BuddyInfo buddy){
-		buddylist.add(buddy);
+		super.addElement(buddy);
 	}
 	
 	public void removeBuddy(BuddyInfo buddy){
-		buddylist.remove(buddy);
+		super.removeElement(buddy);
 	}
 	
-	public static void main (String[] args){
-		System.out.println("Address Book");
-		BuddyInfo buddy1 = new BuddyInfo();
-		AddressBook addressbook = new AddressBook();
-		addressbook.addBuddy(buddy1);
-		addressbook.removeBuddy(buddy1);
+	public DefaultListModel getStringList(){
+		DefaultListModel temp = new DefaultListModel();
+		for(int i=0;i<super.size();++i){
+			temp.addElement(super.get(i).toString());
+		}
+		return(temp);
+	}
 		
-	}
-	
 }
 
 
